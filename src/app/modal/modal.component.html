@@ -1,0 +1,9 @@
+<ng-container>
+  <section [class.open]="display?.modalState === 'open'"
+           (click)="close()">
+    <div (click)="$event.stopPropagation()">
+      <button class="close" type="button" (click)="close()">X</button>
+      <template #viewComponent></template>
+    </div>
+  </section>
+</ng-container>

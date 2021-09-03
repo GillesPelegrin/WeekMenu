@@ -1,0 +1,36 @@
+<div class="container">
+  <div class="btn-container">
+    <button class="config-button">
+      <fa-icon [icon]="faCog "></fa-icon> Settings
+    </button>
+
+    <button class="generate-button" (click)="generateWeekMenu()">Generate menu
+      <fa-icon [icon]="faRedoAlt "></fa-icon>
+    </button>
+  </div>
+
+  <table>
+    <tr>
+<!--      <th class="lock lock-header" (click)="revertAllLocks()">-->
+<!--        <fa-icon [icon]="areAllLocksClosed() ? faLock : faLockOpen "></fa-icon>-->
+<!--      </th>-->
+      <th>Dag</th>
+      <th class="recipe">Recept</th>
+      <th>Land</th>
+    </tr>
+
+    <tr *ngFor="let weekDay of weekMenu" (click)="weekDay.lock = !weekDay.lock"
+        [ngClass]="weekDay.lock ? 'green-background' : ''">
+<!--      <td [ngClass]="weekDay.lock ? 'lock lock-closed' : 'lock lock-open'">-->
+<!--        <fa-icon [icon]="weekDay.lock ? faLock : faLockOpen"></fa-icon>-->
+<!--      </td>-->
+      <td class="week-day">{{weekDay.day}}</td>
+      <td>{{weekDay.recipe}}</td>
+      <td class="flag"><img [src]="'assets/' + weekDay.country + '.png'" height="32"></td>
+    </tr>
+  </table>
+
+
+</div>
+
+<app-modal></app-modal>
