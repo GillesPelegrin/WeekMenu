@@ -43,7 +43,7 @@ export class AppComponent implements OnInit {
 
     this.weekMenu = this.weekMenu.map(weekDay => {
       if (!weekDay.lock) {
-
+// adding some comment
         let recipe: Recipe;
         do {
           recipe = this.recipeService.getRandomRecipe()
