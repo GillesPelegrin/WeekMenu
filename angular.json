@@ -3,7 +3,7 @@
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
-    "WeekMenuGenerator": {
+    "WeekMenu": {
       "projectType": "application",
       "schematics": {
         "@schematics/angular:component": {
@@ -20,7 +20,7 @@
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
           "options": {
-            "outputPath": "dist/WeekMenuGenerator",
+            "outputPath": "dist/WeekMenu",
             "index": "src/index.html",
             "main": "src/main.ts",
             "polyfills": "src/polyfills.ts",
@@ -32,7 +32,7 @@
               "src/manifest.webmanifest"
             ],
             "styles": [
-              "src/styles.scss",
+              "src/styles.scss"
             ],
             "scripts": [],
             "serviceWorker": true,
@@ -75,10 +75,10 @@
           "builder": "@angular-devkit/build-angular:dev-server",
           "configurations": {
             "production": {
-              "browserTarget": "WeekMenuGenerator:build:production"
+              "browserTarget": "WeekMenu:build:production"
             },
             "development": {
-              "browserTarget": "WeekMenuGenerator:build:development"
+              "browserTarget": "WeekMenu:build:development"
             }
           },
           "defaultConfiguration": "development"
@@ -86,7 +86,7 @@
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
-            "browserTarget": "WeekMenuGenerator:build"
+            "browserTarget": "WeekMenu:build"
           }
         },
         "test": {
@@ -103,7 +103,7 @@
               "src/manifest.webmanifest"
             ],
             "styles": [
-              "src/styles.scss",
+              "src/styles.scss"
             ],
             "scripts": []
           }
@@ -111,5 +111,5 @@
       }
     }
   },
-  "defaultProject": "WeekMenuGenerator"
+  "defaultProject": "WeekMenu"
 }

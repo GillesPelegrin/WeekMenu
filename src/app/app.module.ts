@@ -4,15 +4,17 @@ import {BrowserModule} from '@angular/platform-browser';
 import {AppRoutingModule} from './app-routing.module';
 import {AppComponent} from './app.component';
 import {FontAwesomeModule} from '@fortawesome/angular-fontawesome';
-import {ConfigModalComponent} from "./config/config-modal.component";
+import {SettingComponent} from "./components/setting/setting.component";
 import {ModalComponent} from "./modal/modal.component";
 import { ServiceWorkerModule } from '@angular/service-worker';
 import { environment } from '../environments/environment';
+import {MenuComponent} from "./components/menu/menu.component";
 
 @NgModule({
   declarations: [
     AppComponent,
-    ConfigModalComponent,
+    MenuComponent,
+    SettingComponent,
     ModalComponent
   ],
   imports: [
@@ -27,7 +29,7 @@ import { environment } from '../environments/environment';
     })
   ],
   providers: [],
-  entryComponents: [ConfigModalComponent],
+  entryComponents: [SettingComponent],
   bootstrap: [AppComponent]
 })
 export class AppModule {

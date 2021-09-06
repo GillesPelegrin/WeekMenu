@@ -1,13 +1,13 @@
 import {BehaviorSubject, Observable} from "rxjs";
 import {Component, Injectable} from "@angular/core";
-import {ConfigModalComponent} from "../config/config-modal.component";
+import {SettingComponent} from "../components/setting/setting.component";
 
 @Injectable({
   providedIn: 'root'
 })
 export class ModalService {
   private display: BehaviorSubject<ModalConfig> =
-    new BehaviorSubject<ModalConfig>({modalState: 'close', component: ConfigModalComponent} as ModalConfig);
+    new BehaviorSubject<ModalConfig>({modalState: 'close', component: SettingComponent} as ModalConfig);
 
   public watch(): Observable<ModalConfig> {
     return this.display.asObservable();

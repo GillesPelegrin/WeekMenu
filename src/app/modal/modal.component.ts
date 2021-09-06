@@ -9,7 +9,7 @@ import {
   ViewContainerRef
 } from "@angular/core";
 import {ModalConfig, ModalService} from "./modal.service";
-import {ConfigModalComponent} from "../config/config-modal.component";
+import {SettingComponent} from "../components/setting/setting.component";
 
 @Component({
   selector: 'app-modal',

@@ -1,0 +1,36 @@
+<div class="container">
+  <div class="app-header">
+    <h3 class="app-title">
+      <fa-icon [icon]="faCog "></fa-icon>
+      Settings
+    </h3>
+    <button class="action-header-right-align" routerLink="/home">
+      <fa-icon [icon]="faArrowLeft"></fa-icon>
+    </button>
+  </div>
+
+
+  <table>
+    <tr>
+      <th>Dag</th>
+      <th>Recept</th>
+      <th>Land</th>
+    </tr>
+
+    <tr *ngFor="let weekMenuSetting of weekMenuSettings">
+      <td class="week-day">{{weekMenuSetting.day}}</td>
+      <td>
+        <select>
+          <option value="" selected>Select any ...</option>
+          <option *ngFor="let recipe of recipes">{{recipe.name}}</option>
+        </select>
+      </td>
+      <td>
+        <select>
+          <option value="" selected>Select any ...</option>
+          <option *ngFor="let country of countries">{{country | lowercase}}</option>
+        </select>
+      </td>
+    </tr>
+  </table>
+</div>

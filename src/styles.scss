@@ -25,11 +25,13 @@ time, mark, audio, video {
   font: inherit;
   vertical-align: baseline;
 }
+
 /* HTML5 display-role reset for older browsers */
 article, aside, details, figcaption, figure,
 footer, header, hgroup, menu, nav, section {
   display: block;
 }
+
 html {
   height: 100%;
   width: 100%;
@@ -40,20 +42,63 @@ body {
   line-height: 1;
   background-color: #F2F2F2;
   height: 100%;
+  color: #828282;
 }
 
 ol, ul {
   list-style: none;
 }
+
 blockquote, q {
   quotes: none;
 }
+
 blockquote:before, blockquote:after,
 q:before, q:after {
   content: '';
   content: none;
 }
+
 table {
   border-collapse: collapse;
   border-spacing: 0;
+}
+
+* {
+  font-family: 'Roboto', sans-serif;
+  font-weight: normal;
+}
+
+
+.app-header {
+
+  background-color: white;
+  padding: 1rem 0.5rem;
+  margin-bottom: 1rem;
+  display: flex;
+  align-items: center;
+  min-height: 2.5rem;
+  color: #828282;
+
+  .logo {
+    height: 2rem;
+  }
+
+  .app-title {
+    display: inline;
+    font-weight: bold;
+    font-size: 1.5rem;
+    padding-left: 0.5rem;
+    flex-grow: 5;
+  }
+
+  .action-header-right-align {
+    background-color: white;
+    padding: 0 0.5rem 0 0;
+    font-size: 1.3rem;
+
+    .ng-fa-icon {
+      color: #828282;;
+    }
+  }
 }

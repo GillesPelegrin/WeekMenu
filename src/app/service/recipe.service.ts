@@ -10,4 +10,8 @@ export class RecipeService {
   public getRandomRecipe(): Recipe {
     return db.recipes[Math.floor(Math.random() * db.recipes.length)] as Recipe;
   }
+
+  public getAllRecipes(): Recipe[] {
+    return db.recipes as Recipe[];
+  }
 }

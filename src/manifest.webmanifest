@@ -1,6 +1,6 @@
 {
-  "name": "WeekMenuGenerator",
-  "short_name": "WeekMenuGenerator",
+  "name": "WeekMenu",
+  "short_name": "WeekMenu",
   "theme_color": "#1976d2",
   "background_color": "#fafafa",
   "display": "standalone",

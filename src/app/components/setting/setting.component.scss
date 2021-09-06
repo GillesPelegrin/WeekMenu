@@ -1,0 +1,64 @@
+
+.container {
+  display: flex;
+  flex-direction: column;
+}
+
+table {
+  background-color: white;
+  width: 100%;
+  border-spacing: 20px;
+
+  tr {
+    text-align: left;
+    font-size: 1rem;
+
+    &:first-child {
+      border-bottom: #828282 0.1rem solid;
+    }
+
+    td, th {
+      padding: 0.5rem 1rem;
+
+    }
+
+    th {
+      font-weight: bold;
+      padding: 1rem;
+
+      &.recipe {
+        //width: 100%;
+      }
+    }
+
+    &:hover:not(:first-child) {
+      cursor: pointer;
+    }
+
+    td {
+      .flag img {
+        vertical-align: center;
+      }
+    }
+
+    .week-day {
+      font-weight: bolder;
+    }
+
+  }
+}
+
+select {
+  max-width: 7rem;
+  border-radius: 4px;
+  color: #404040;
+  padding: 0.2rem;
+  background-color: white;
+}
+
+button {
+  border-radius: 4px;
+  font-size: large;
+  border-width: 0;
+  padding: 0.9rem;
+}
