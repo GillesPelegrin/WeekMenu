@@ -3,7 +3,8 @@ import {faArrowLeft, faCog} from "@fortawesome/free-solid-svg-icons";
 import {Country} from "../../model/country.enum";
 import {RecipeService} from "../../service/recipe.service";
 import {Recipe} from "../../model/recipe.model";
-import {WeekDay} from "../../model/week-day.model";
+import {MenuFactory} from "../../service/menu.factory";
+import {WeekDayFilter} from "../../model/week-day-filter.model";
 
 @Component({
   templateUrl: './setting.component.html',
@@ -11,32 +12,35 @@ import {WeekDay} from "../../model/week-day.model";
 })
 export class SettingComponent implements OnInit {
 
-  countries: String[] = Object.values(Country);
+  countries: String[] = Object.values(Country).filter(country => country !== Country.NONE);
   recipes: Recipe[]
-  weekMenuSettings;
+  weekMenuSettings: WeekDayFilter[];
+
+  country = Country;
 
   faCog = faCog;
   faArrowLeft = faArrowLeft;
 
-  constructor(private recipeService: RecipeService) {
-
+  constructor(private recipeService: RecipeService,
+              private menuFactory: MenuFactory) {
   }
-
 
   ngOnInit(): void {
     this.recipes = this.recipeService.getAllRecipes();
-
-      this.weekMenuSettings = [
-        {day: "Ma"} as WeekDay,
-        {day: "Di"} as WeekDay,
-        {day: "Wo"} as WeekDay,
-        {day: "Do"} as WeekDay,
-        {day: "Vr"} as WeekDay,
-        {day: "Za"} as WeekDay,
-        {day: "Zo"} as WeekDay,
-      ]
-
+    this.weekMenuSettings = this.menuFactory.getSettings();
   }
 
+  public updateRecipe(weekDayFilter: WeekDayFilter) {
+    weekDayFilter.setFilterOnRecipe(this.recipeService.getRecipeById(weekDayFilter.recipeId));
+    this.updateSetting();
+  }
 
+  public updateCountry(weekDayFilter: WeekDayFilter, country: Country) {
+    weekDayFilter.setFilterOnCountry(country);
+    this.updateSetting();
+  }
+
+  private updateSetting() {
+    this.menuFactory.setSetting(this.weekMenuSettings);
+  }
 }

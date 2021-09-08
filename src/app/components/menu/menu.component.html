@@ -2,7 +2,7 @@
 
   <div class="app-header">
     <img class="logo" src="assets/icons/icon-192x192.png">
-    <h3 class="app-title">WeekMenu <a class="version">v0.04</a></h3>
+    <h3 class="app-title">WeekMenu <a class="version">v0.05</a></h3>
     <button class="action-header-right-align" routerLink="/setting">
       <fa-icon [icon]="faCog"></fa-icon>
     </button>
@@ -21,11 +21,11 @@
       <th>Land</th>
     </tr>
 
-    <tr *ngFor="let weekDay of weekMenu" (click)="weekDay.lock = !weekDay.lock"
-        [ngClass]="weekDay.lock ? 'green-background' : ''">
+    <tr *ngFor="let weekDay of weekMenu" (click)="clickOnMenuItem(weekDay)"
+        [ngClass]="getClassForMenu(weekDay)">
       <td class="week-day">{{weekDay.day}}</td>
-      <td>{{weekDay.recipe}}</td>
-      <td class="flag"><img [src]="'assets/' + weekDay.country + '.png'" height="32"></td>
+      <td>{{weekDay.recipe.name}}</td>
+      <td class="flag"><img [src]="'assets/' + weekDay.recipe.country + '.png'" height="32"></td>
     </tr>
   </table>
 

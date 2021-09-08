@@ -20,15 +20,21 @@
     <tr *ngFor="let weekMenuSetting of weekMenuSettings">
       <td class="week-day">{{weekMenuSetting.day}}</td>
       <td>
-        <select>
-          <option value="" selected>Select any ...</option>
-          <option *ngFor="let recipe of recipes">{{recipe.name}}</option>
+        <select [(ngModel)]="weekMenuSetting.recipeId"
+                (ngModelChange)="updateRecipe(weekMenuSetting)">
+          <option [value]="undefined" selected>Select any ...</option>
+          <option *ngFor="let recipe of recipes"
+                  [ngValue]="recipe.id"
+          >{{recipe.name}}</option>
         </select>
       </td>
       <td>
-        <select>
-          <option value="" selected>Select any ...</option>
-          <option *ngFor="let country of countries">{{country | lowercase}}</option>
+        <select [ngModel]="weekMenuSetting.country"
+                (ngModelChange)="updateCountry(weekMenuSetting, $event)">
+          <option [value]="country.NONE" selected>Select any ...</option>
+          <option *ngFor="let country of countries"
+                  [value]="country"
+                  ngDefaultControl>{{country | lowercase}}</option>
         </select>
       </td>
     </tr>
