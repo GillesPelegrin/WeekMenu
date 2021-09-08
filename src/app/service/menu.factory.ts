@@ -31,13 +31,13 @@ export class MenuFactory {
 
     this.weekMenu = this.weekMenu
       .map(weekDay => {
-      if (!weekDay.lock && !weekDay.setBySetting) {
-        const recipe = this.generateUniqueRecipe(weekMenuUnderDevelopment);
-        weekMenuUnderDevelopment.push(recipe);
-        return {...weekDay, ...{recipe: recipe} as WeekDay}
-      }
-      return weekDay
-    });
+        if (!weekDay.lock && !weekDay.setBySetting) {
+          const recipe = this.generateUniqueRecipe(weekMenuUnderDevelopment);
+          weekMenuUnderDevelopment.push(recipe);
+          return {...weekDay, ...{recipe: recipe} as WeekDay}
+        }
+        return weekDay
+      });
 
     return this.weekMenu;
   }
@@ -69,12 +69,18 @@ export class MenuFactory {
         weekDay.recipe = recipe
         weekDay.disabled = true;
         weekDay.setBySetting = true;
+        return;
       }
 
       if (weekMenuSetting.isFilterActiveOnCountry() && !weekDay.lock) {
         weekDay.recipe = this.recipeService.getRandomRecipeOfCountry(weekMenuSetting.country);
         weekDay.setBySetting = true;
+        weekDay.disabled = false;
+        return;
       }
+
+      weekDay.disabled = false;
+      weekDay.setBySetting = false;
     })
   }
 

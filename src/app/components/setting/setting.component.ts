@@ -30,8 +30,10 @@ export class SettingComponent implements OnInit {
     this.weekMenuSettings = this.menuFactory.getSettings();
   }
 
-  public updateRecipe(weekDayFilter: WeekDayFilter) {
-    weekDayFilter.setFilterOnRecipe(this.recipeService.getRecipeById(weekDayFilter.recipeId));
+  public updateRecipe(weekDayFilter: WeekDayFilter, recipeId: string) {
+    weekDayFilter.nonSelectedRecipeId === recipeId ? weekDayFilter.clearFilter() :
+      weekDayFilter.setFilterOnRecipe(this.recipeService.getRecipeById(weekDayFilter.recipeId));
+
     this.updateSetting();
   }
 

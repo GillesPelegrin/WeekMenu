@@ -21,8 +21,8 @@
       <td class="week-day">{{weekMenuSetting.day}}</td>
       <td>
         <select [(ngModel)]="weekMenuSetting.recipeId"
-                (ngModelChange)="updateRecipe(weekMenuSetting)">
-          <option [value]="undefined" selected>Select any ...</option>
+                (ngModelChange)="updateRecipe(weekMenuSetting, $event)">
+          <option [value]="'999'" selected>Select any ...</option>
           <option *ngFor="let recipe of recipes"
                   [ngValue]="recipe.id"
           >{{recipe.name}}</option>
