@@ -1,27 +1,37 @@
 # WeekMenu
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 12.1.0.
+A PWA that makes life easier to dicide what you gonna eat this week.
+Basic concept: you add your dishes you like to make / order and press the button generate weekMenu.
+You don't like the generated week menu, just press it again.
 
-## Development server
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
+## Make it open for the public V 1.0
 
-## Code scaffolding
+### Functional
+- [ ] Adding Authorization and authentication - With fancy login page  
+- [ ] Switch to firebase DB instead of JSON file and couple it to the user
+- [ ] Add a way to see all your recipes and how you can add / edit / delete them
+  
+### Technical
+- [ ] Redesign the CSS that it will follow some best practice DRY / BEM / Global style
+- [ ] Start using test ! -> Cypress al the way
+- [ ] Use a CI tool like Travis or Jenkins and only deploy when the test are succesfull
+- [ ] Have a better way to update the application instead of checking it when your on the app.component.ts
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
 
-## Build
+### UI/UX
+- [ ] redesign all pages
+- [ ] Create your own logo
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
 
-## Running unit tests
+### Google play store
+- [ ] Look up how to publish your pwa on the google play store
+- [ ] publish it
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+## Adding new features instead adapting to multiple users V 2.0
 
-## Running end-to-end tests
+### Functional
+- [ ] adding recipes in forms of photo's or text or url
+- [ ] visualizing recipes 
+- [ ] store them to your calendar and also in the app
 
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
-
-## Further help
-
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
