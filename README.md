@@ -14,8 +14,8 @@ You don't like the generated week menu, just press it again.
   
 ### Technical
 - [ ] Redesign the CSS that it will follow some best practice DRY / BEM / Global style
-- [ ] Start using test ! -> Cypress al the way
-- [ ] Use a CI tool like Travis or Jenkins and only deploy when the test are succesfull
+- [ ] Start using test ! -> Cypress al the way  (1)
+- [ ] Use a CI tool like Travis or Jenkins and only deploy when the test are succesfull (2)
 - [ ] Have a better way to update the application instead of checking it when your on the app.component.ts
 
 
