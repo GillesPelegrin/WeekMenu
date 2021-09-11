@@ -14,9 +14,4 @@ describe('example to-do app', () => {
       .should('have.length', 8)
   });
 
-  // it('should have all unique recipes in the list', () => {
-  //   cy.get('#menu-table').find('[id^="recipe-name-"]')
-  //     .should('have.length', 7)
-      // .invoke('text').then((text) => expect(text.trim()).equal('DagReceptLand'))
-  // });
 })
