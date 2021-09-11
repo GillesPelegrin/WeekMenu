@@ -14,22 +14,20 @@
     </button>
   </div>
 
-  <table>
+  <table id="menu-table">
     <tr>
       <th>Dag</th>
       <th class="recipe">Recept</th>
       <th>Land</th>
     </tr>
 
-    <tr *ngFor="let weekDay of weekMenu" (click)="clickOnMenuItem(weekDay)"
+    <tr *ngFor="let weekDay of weekMenu; let i = index" (click)="clickOnMenuItem(weekDay)"
         [ngClass]="getClassForMenu(weekDay)">
       <td class="week-day">{{weekDay.day}}</td>
-      <td>{{weekDay.recipe.name}}</td>
+      <td [id]="'recipe-name-' + i">{{weekDay.recipe.name}}</td>
       <td class="flag"><img [src]="'assets/' + weekDay.recipe.country + '.png'" height="32"></td>
     </tr>
   </table>
-
-
 </div>
 
 <!--<app-modal></app-modal>-->

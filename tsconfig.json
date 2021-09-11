@@ -23,12 +23,14 @@
     "importHelpers": true,
     "resolveJsonModule": true,
     "target": "es2017",
+    "types": ["cypress"],
     "module": "es2020",
     "lib": [
       "es2018",
       "dom"
     ]
   },
+  "include": ["**/*.ts"],
   "angularCompilerOptions": {
     "enableI18nLegacyMessageIdFormat": false,
     "strictInjectionParameters": false,
