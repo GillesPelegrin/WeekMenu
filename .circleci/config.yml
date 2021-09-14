@@ -7,6 +7,8 @@ orbs:
 workflows:
   build:
     jobs:
+      - angular/install:
+          - build: 'npm install'
       - cypress/install:
           build: 'npm run build' # run a custom app build step
       - cypress/run:
