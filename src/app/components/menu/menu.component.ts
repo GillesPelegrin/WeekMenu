@@ -16,7 +16,8 @@ export class MenuComponent implements OnInit {
   faRedoAlt = faRedoAlt;
 
   constructor(private modalService: ModalService,
-              private menuFactory: MenuFactory) {
+              private menuFactory: MenuFactory,
+  ) {
   }
 
   ngOnInit() {
@@ -24,7 +25,7 @@ export class MenuComponent implements OnInit {
   }
 
   public generateWeekMenu() {
-    this.weekMenu = this.menuFactory.createMenu();
+    this.menuFactory.createMenu().subscribe(weekMenu => this.weekMenu = weekMenu);
   }
 
   public getClassForMenu(weekDay: WeekDay): string {

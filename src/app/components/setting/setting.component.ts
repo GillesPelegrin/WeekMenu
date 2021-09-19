@@ -5,6 +5,7 @@ import {RecipeService} from "../../service/recipe.service";
 import {Recipe} from "../../model/recipe.model";
 import {MenuFactory} from "../../service/menu.factory";
 import {WeekDayFilter} from "../../model/week-day-filter.model";
+import {SettingService} from "../../service/setting.service";
 
 @Component({
   templateUrl: './setting.component.html',
@@ -22,12 +23,12 @@ export class SettingComponent implements OnInit {
   faArrowLeft = faArrowLeft;
 
   constructor(private recipeService: RecipeService,
-              private menuFactory: MenuFactory) {
+              private settingService: SettingService) {
   }
 
   ngOnInit(): void {
-    this.recipes = this.recipeService.getAllRecipes();
-    this.weekMenuSettings = this.menuFactory.getSettings();
+    this.recipeService.getAllRecipes().subscribe(recipes => this.recipes = recipes);
+    this.weekMenuSettings = this.settingService.getSettings();
   }
 
   public updateRecipe(weekDayFilter: WeekDayFilter, recipeId: string) {
@@ -43,6 +44,6 @@ export class SettingComponent implements OnInit {
   }
 
   private updateSetting() {
-    this.menuFactory.setSetting(this.weekMenuSettings);
+    this.settingService.setSetting(this.weekMenuSettings);
   }
 }

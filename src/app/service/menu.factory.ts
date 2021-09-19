@@ -4,6 +4,9 @@ import {WeekDay} from "../model/week-day.model";
 import {Recipe} from "../model/recipe.model";
 import {WeekDayFilter} from "../model/week-day-filter.model";
 import {Day} from "../model/day.model";
+import {Observable} from "rxjs";
+import {map} from "rxjs/operators";
+import {SettingService} from "./setting.service";
 
 @Injectable({
   providedIn: 'root'
@@ -20,45 +23,37 @@ export class MenuFactory {
     {day: Day.SUNDAY} as WeekDay,
   ]
 
-  constructor(private recipeService: RecipeService) {
+  constructor(private recipeService: RecipeService,
+              private settingRecipe: SettingService) {
   }
 
-  public createMenu(): WeekDay[] {
-    let weekMenuUnderDevelopment: Recipe[] = [];
+  public createMenu(): Observable<WeekDay[]> {
 
-    this.updateWeekMenuBySettings()
-    this.updateWeekMenuUnderDevelopmentWithSettingsMenu(weekMenuUnderDevelopment);
+    return this.recipeService.getAllRecipes()
+      .pipe(map((recipes: Recipe[]) => {
+      this.recipeService.setRecipes(recipes);
+      let weekMenuUnderDevelopment: Recipe[] = [];
 
-    this.weekMenu = this.weekMenu
-      .map(weekDay => {
-        if (!weekDay.lock && !weekDay.setBySetting) {
-          const recipe = this.generateUniqueRecipe(weekMenuUnderDevelopment);
-          weekMenuUnderDevelopment.push(recipe);
-          return {...weekDay, ...{recipe: recipe} as WeekDay}
-        }
-        return weekDay
-      });
+      this.updateWeekMenuBySettings()
+      this.updateWeekMenuUnderDevelopmentWithSettingsMenu(weekMenuUnderDevelopment);
 
-    return this.weekMenu;
+      this.weekMenu = this.weekMenu
+        .map(weekDay => {
+          if (!weekDay.lock && !weekDay.setBySetting) {
+            const recipe = this.recipeService.getRandomRecipeExcept(weekMenuUnderDevelopment);
+            weekMenuUnderDevelopment.push(recipe);
+            return {...weekDay, ...{recipe: recipe} as WeekDay}
+          }
+          return weekDay
+        });
+
+      return this.weekMenu;
+    }))
+
   }
 
-
-  private generateUniqueRecipe(weekMenuUnderDevelopment: Recipe[]): Recipe {
-    let recipe: Recipe;
-    do {
-      recipe = this.recipeService.getRandomRecipe()
-    }
-    while (this.isRecipeInUnderDevelopmentWeekMenu(weekMenuUnderDevelopment, recipe))
-
-    return recipe
-  }
-
-  private isRecipeInUnderDevelopmentWeekMenu(weekMenuUnderDevelopment: Recipe[], newRecipe: Recipe): boolean {
-    return weekMenuUnderDevelopment.filter((recipe: Recipe) => recipe.id === newRecipe.id).length != 0;
-  }
-
-  private updateWeekMenuBySettings() {
-    const weekMenuSetting: WeekDayFilter[] = this.getSettings();
+  private updateWeekMenuBySettings(): void {
+    const weekMenuSetting: WeekDayFilter[] = this.settingRecipe.getSettings();
 
     weekMenuSetting.forEach(weekMenuSetting => {
       const weekMenuDayIndex = this.weekMenu.findIndex(weekDay => weekMenuSetting.day == weekDay.day)
@@ -94,25 +89,6 @@ export class MenuFactory {
       .forEach(weekDay => weekMenuUnderDevelopment.push(weekDay.recipe));
   }
 
-  public setSetting(weekdays: WeekDayFilter[]) {
-    localStorage.clear();
-    localStorage.setItem('weekMenu', JSON.stringify(weekdays));
-  }
 
-  public getSettings(): WeekDayFilter[] {
-    const weekDayFilter = JSON.parse(localStorage.getItem('weekMenu')) as WeekDayFilter[]
-    return weekDayFilter == undefined ? this.getEmptyWeekMenuFilter() :
-      weekDayFilter.map(weekDayFilter => new WeekDayFilter(weekDayFilter.day, weekDayFilter.recipeId, weekDayFilter.country));
-  }
-
-  private getEmptyWeekMenuFilter(): WeekDayFilter[] {
-    return [new WeekDayFilter(Day.MONDAY),
-      new WeekDayFilter(Day.TUESDAY),
-      new WeekDayFilter(Day.WEDNESDAY),
-      new WeekDayFilter(Day.THURSDAY),
-      new WeekDayFilter(Day.FRIDAY),
-      new WeekDayFilter(Day.SATURDAY),
-      new WeekDayFilter(Day.SUNDAY)]
-  }
 
 }

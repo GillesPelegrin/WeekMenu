@@ -9,19 +9,20 @@ You don't like the generated week menu, just press it again.
 
 ### Functional
 - [ ] Adding Authorization and authentication - With fancy login page  
-- [ ] Switch to firebase DB instead of JSON file and couple it to the user
+- [x] Switch to firebase DB instead of JSON file and couple it to the user (3)
 - [ ] Add a way to see all your recipes and how you can add / edit / delete them
   
 ### Technical
 - [ ] Redesign the CSS that it will follow some best practice DRY / BEM / Global style
-- [ ] Start using test ! -> Cypress al the way  (1)
-- [ ] Use a CI tool like Travis or Jenkins and only deploy when the test are succesfull (2)
+- [x] Start using test ! -> Cypress al the way  (1)
+- [x] Use a CI tool like Travis or Jenkins and only deploy when the test are succesfull (2)
 - [ ] Have a better way to update the application instead of checking it when your on the app.component.ts
 
 
 ### UI/UX
 - [ ] redesign all pages
 - [ ] Create your own logo
+- [ ] add animation when switching pages
 
 
 ### Google play store

@@ -10,12 +10,16 @@ import { ServiceWorkerModule } from '@angular/service-worker';
 import { environment } from '../environments/environment';
 import {MenuComponent} from "./components/menu/menu.component";
 import {FormsModule} from "@angular/forms";
+import {AngularFireModule} from "@angular/fire/compat";
+import {AngularFirestoreModule} from "@angular/fire/compat/firestore";
+import {AdminComponent} from "./components/admin/admin.component";
 
 @NgModule({
   declarations: [
     AppComponent,
     MenuComponent,
     SettingComponent,
+    AdminComponent,
     ModalComponent
   ],
   imports: [
@@ -23,12 +27,14 @@ import {FormsModule} from "@angular/forms";
     AppRoutingModule,
     FontAwesomeModule,
     FormsModule,
+    AngularFireModule.initializeApp(environment.firebaseConfig),
+    AngularFirestoreModule,
     ServiceWorkerModule.register('ngsw-worker.js', {
       enabled: environment.production,
       // Register the ServiceWorker as soon as the app is stable
       // or after 30 seconds (whichever comes first).
       registrationStrategy: 'registerWhenStable:30000'
-    })
+    }),
   ],
   providers: [],
   entryComponents: [SettingComponent],
