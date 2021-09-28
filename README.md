@@ -24,6 +24,9 @@ You don't like the generated week menu, just press it again.
 - [ ] Create your own logo
 - [ ] add animation when switching pages
 
+### BUGS
+
+- [ ] add all countries
 
 ### Google play store
 - [ ] Look up how to publish your pwa on the google play store

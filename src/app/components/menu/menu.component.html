@@ -3,13 +3,13 @@
   <div class="app-header">
     <img class="logo" src="assets/icons/icon-192x192.png">
     <h3 class="app-title">WeekMenu <a class="version">v0.07</a></h3>
-    <button class="action-header-right-align" routerLink="/setting">
+    <button class="action-header-right-align"  id="setting-button" routerLink="/setting">
       <fa-icon [icon]="faCog"></fa-icon>
     </button>
   </div>
 
   <div class="btn-container">
-    <button class="generate-button" (click)="generateWeekMenu()">Generate menu
+    <button class="generate-button" id="generate-recipes" (click)="generateWeekMenu()">Generate menu
       <fa-icon [icon]="faRedoAlt " class="generate-button-icon"></fa-icon>
     </button>
   </div>

@@ -4,7 +4,9 @@
       <fa-icon [icon]="faCog "></fa-icon>
       Settings
     </h3>
-    <button class="action-header-right-align" routerLink="/home">
+    <button class="action-header-right-align"
+            [id]="'back-to-menu-button'"
+            routerLink="/home">
       <fa-icon [icon]="faArrowLeft"></fa-icon>
     </button>
   </div>
@@ -17,11 +19,12 @@
       <th>Land</th>
     </tr>
 
-    <tr *ngFor="let weekMenuSetting of weekMenuSettings">
+    <tr *ngFor="let weekMenuSetting of weekMenuSettings; let i = index">
       <td class="week-day">{{weekMenuSetting.day}}</td>
       <td>
         <select [(ngModel)]="weekMenuSetting.recipeId"
-                (ngModelChange)="updateRecipe(weekMenuSetting, $event)">
+                (ngModelChange)="updateRecipe(weekMenuSetting, $event)"
+        [id]="'select-recipe-' + weekMenuSetting.day + '-' + i" >
           <option [value]="'999'" selected>Select any ...</option>
           <option *ngFor="let recipe of recipes"
                   [ngValue]="recipe.id"

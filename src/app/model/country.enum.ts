@@ -3,4 +3,6 @@ export enum Country {
   BELGIE = 'BELGIE',
   ITALIE = 'ITALIE',
   MEXICO = 'MEXICO',
+  SPAIN = 'SPAIN',
+  THAILAND = 'THAILAND',
 }
